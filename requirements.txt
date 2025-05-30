@@ -1,0 +1,6 @@
+Django==4.2.6
+djangorestframework==3.14.0
+mysqlclient==2.2.0
+chromadb==0.3.21
+PyMuPDF==1.21.0
+openai==0.27.0
