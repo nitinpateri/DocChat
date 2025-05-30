@@ -20,6 +20,7 @@ Document RAG(DocChat) is an AI-powered full-stack web app that allows users to u
 
 ### Backend:
 - Django + Django REST Framework
+- MySQL
 - ChromaDB
 - PyMuPDF (text extraction)
 - Optional: OpenAI or LM Studio (local inference)
@@ -65,8 +66,74 @@ npm install
 npm run dev
 ```
 
+## MySQL Setup
 
-## 🧠 Running with LM Studio (Local LLM)\
+To run this project locally with MySQL, follow these steps:
+
+1. **Install MySQL:**
+
+   - Download and install MySQL Community Server from [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)  
+   - Follow the installation instructions for your operating system.
+
+2. **Create a Database and User:**
+
+   Log into MySQL shell using the root user:
+
+   ```bash
+   mysql -u root -p
+Then run the following commands to create a new database and user (replace your_db_name, your_user, and your_password accordingly):
+
+SQL
+```bash
+CREATE DATABASE your_db_name;
+CREATE USER 'your_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON your_db_name.* TO 'your_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+Configure Your Application:
+
+In your Django settings file (settings.py), set the MySQL connection string. For example:
+
+python
+```bash
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'your_db_name',
+        'USER': 'your_user',
+        'PASSWORD': 'your_password',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+```
+Install Required Python Packages:
+
+Make sure you have the MySQL client installed:
+
+```bash
+pip install mysqlclient
+```
+Run Database Migrations:
+
+Apply the migrations to set up your database schema:
+
+```bash
+python manage.py migrate
+```
+Verify the Setup:
+
+Run the development server:
+
+```bash
+python manage.py runserver
+````
+Visit http://127.0.0.1:8000/ in your browser to verify that the application is running correctly.
+
+
+
+## 🧠 Running with LM Studio (Local LLM)
 
 - To run this app completely offline with a local large language model, we use LM Studio — a powerful desktop app that exposes models through an OpenAI-compatible API.
 
