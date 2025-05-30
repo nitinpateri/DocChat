@@ -122,9 +122,11 @@ response = openai.ChatCompletion.create(
 ```
 ## 💡 Notes
 
--  No internet is required once the model is loaded in LM Studio.
+- No internet connection is required once the model is loaded into LM Studio.
 
 - Mistral 7B Q4 works well with 16 GB RAM (11 GB usable).
 
 - You can switch between OpenAI and LM Studio anytime via .env.
+  
+- After asking the question, the DocChat will take at least 2 minutes to load. Be Patient.
 
